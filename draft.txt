@@ -1,0 +1,97 @@
+Syntax:
+	() are for tuples, with seamless conversion between single tuples and values (needed for coherence with grouping)
+	[] are for arrays, slices, maps
+	{} are for blocks
+
+
+Data structures:
+	 - Anonymous tuples (var1, var2)
+	 - Named tuples (x: var1, y: var2) CONTENT FOCUSED
+	 - Structs (kind of class like) IDENTITY FOCUSED
+	 - Arrays
+	 - Slices
+	 - Maps
+
+
+Structs:
+	operator overloading supported through match in the declaration
+
+
+Interfaces/traits:
+
+
+Concurrency?
+
+
+Built-in data types:
+	 - i8, i16, i32, i64, iX?, u8, u16, u32, u64, uX?
+	 - f32, f64
+	 - char, utfchar
+	 - string
+	 - invalid: any type can take the value invalid
+	 - nil?
+
+
+Pointers:
+	& refs
+	automatic free() insertion in the code at compile-time
+
+
+If:
+	if condition {
+		
+	} elif condition {
+		
+	} else {
+		
+	}
+
+
+While:
+	while condition {
+		
+	}
+
+
+For:
+	for decl; condition; incr {
+		
+	}
+
+	for i in 1..10 {
+		
+	}
+
+	for key, value in map {
+		
+	}
+
+
+Variable declaration:
+	Type name = value
+	name := value
+	mut Type name = value
+	mut name := value
+
+
+Function declaration:
+	func name(type1 arg1, type2 arg2 = default2) -> (ret1, ret2) {
+		ret (var1, var2)
+	}
+
+
+Function call:
+	(res1, res2, err) = function()
+
+	OR
+	
+	(res1, res2) = function() ! {
+		io.print("error")
+	}
+	Builtin?
+	! operator on tuples to check if elements are invalid (except the last one?)
+	to chech if an error value is not nil?
+
+
+Pattern matching:
+	match statement (Rust-like)
