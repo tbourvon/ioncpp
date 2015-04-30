@@ -7,7 +7,7 @@
 #include <set>
 #include "token.h"
 #include "ast/node.h"
-#include "ast/package.h"
+#include "ast/packagedecl.h"
 #include "ast/import.h"
 #include "utf8string.h"
 #include "ast/funcdecl.h"
@@ -40,7 +40,7 @@ private:
     Token accept(Token token);
     Token acceptType();
 
-    ast::Package *parsePackage();
+    ast::PackageDecl *parsePackage();
     ast::Import *parseImport();
     ast::FuncDecl *parseFuncDecl();
     ast::FuncCall *parseFuncCall(utf8string context);

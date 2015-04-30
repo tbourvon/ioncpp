@@ -116,8 +116,8 @@ Token Parser::acceptType() {
  *
  * \return The package AST node.
  */
-ast::Package* Parser::parsePackage() {
-    ast::Package* package = new ast::Package;
+ast::PackageDecl* Parser::parsePackage() {
+    ast::PackageDecl* package = new ast::PackageDecl;
     package->name = expect({Token::Identifier, ""}).data;
     return package;
 }

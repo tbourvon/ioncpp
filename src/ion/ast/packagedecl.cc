@@ -1,9 +1,9 @@
-#include "import.h"
+#include "packagedecl.h"
 
 namespace ion {
 namespace ast {
 
-void Import::accept(Visitor *visitor) {
+void PackageDecl::accept(Visitor *visitor) {
     visitor->visitIn(this);
 }
 

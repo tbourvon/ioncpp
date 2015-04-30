@@ -16,7 +16,7 @@ std::vector<Token> Lexer::tokenize(const utf8string &str) {
         skipWhitespace();
         m_currentToken = "";
 
-        if ('A' <= *m_itr && *m_itr <= 'Z' || 'a' <= *m_itr && *m_itr <= 'z' || *m_itr == '_' || *m_itr > 127)
+        if (('A' <= *m_itr && *m_itr <= 'Z') || ('a' <= *m_itr && *m_itr <= 'z') || *m_itr == '_' || *m_itr > 127)
             readWord();
         else if ('0' <= *m_itr && *m_itr <= '9')
             readNumber();
@@ -38,7 +38,7 @@ void Lexer::readWord() {
     do {
         m_currentToken += *m_itr;
         ++m_itr;
-    } while ('A' <= *m_itr && *m_itr <= 'Z' || 'a' <= *m_itr && *m_itr <= 'z' || '0' <= *m_itr && *m_itr <= '9' || *m_itr == '_' || *m_itr > 127);
+    } while (('A' <= *m_itr && *m_itr <= 'Z') || ('a' <= *m_itr && *m_itr <= 'z') || ('0' <= *m_itr && *m_itr <= '9') || *m_itr == '_' || *m_itr > 127);
     if (m_keywords.count(m_currentToken) != 0)
         m_tokens.push_back({Token::Keyword, m_currentToken});
     else

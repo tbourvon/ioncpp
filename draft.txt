@@ -6,7 +6,7 @@ Syntax:
 
 Data structures:
 	 - Anonymous tuples (var1, var2)
-	 - Named tuples (x: var1, y: var2) CONTENT FOCUSED
+	 - Named tuples (x: var1, y: var2) DATA FOCUSED
 	 - Structs (kind of class like) IDENTITY FOCUSED
 	 - Arrays
 	 - Slices
@@ -89,8 +89,7 @@ Function call:
 		io.print("error")
 	}
 	Builtin?
-	! operator on tuples to check if elements are invalid (except the last one?)
-	to chech if an error value is not nil?
+	! operator on tuples to check if elements are invalid? (except the last one?), to chech if a tuple contains a non-nil error value?
 
 
 Pattern matching:

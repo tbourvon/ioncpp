@@ -4,20 +4,20 @@
 namespace ion {
 namespace ast {
 
-class Package;
+class PackageDecl;
 class Import;
 class FuncCall;
 class FuncDecl;
 class StringLiteral;
 
-class Visitor
-{
+class Visitor {
 public:
-    virtual void visit(Package* package) = 0;
-    virtual void visit(Import* import) = 0;
-    virtual void visit(FuncCall* funcCall) = 0;
-    virtual void visit(FuncDecl* funcDecl) = 0;
-    virtual void visit(StringLiteral* stringLiteral) = 0;
+    virtual void visitIn(PackageDecl* package) = 0;
+    virtual void visitIn(Import* import) = 0;
+    virtual void visitIn(FuncCall* funcCall) = 0;
+    virtual void visitIn(FuncDecl* funcDecl) = 0;
+    virtual void visitOut(FuncDecl* funcDecl) = 0;
+    virtual void visitIn(StringLiteral* stringLiteral) = 0;
 };
 
 } // namespace ast

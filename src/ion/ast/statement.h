@@ -6,8 +6,7 @@
 namespace ion {
 namespace ast {
 
-struct Statement : public Node
-{
+struct Statement : public Node {
     virtual void accept(Visitor *visitor) = 0;
 };
 

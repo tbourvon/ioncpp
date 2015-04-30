@@ -4,7 +4,7 @@ namespace ion {
 namespace ast {
 
 void FuncCall::accept(Visitor *visitor) {
-    visitor->visit(this);
+    visitor->visitIn(this);
 }
 
 } // namespace ast

@@ -3,14 +3,13 @@
 
 #include <vector>
 #include "../utf8string.h"
-#include "statement.h"
+#include "declaration.h"
 #include "expression.h"
 
 namespace ion {
 namespace ast {
 
-struct FuncDecl : public Statement
-{
+struct FuncDecl : public Declaration {
 public:
     struct Argument {
         utf8string type;
