@@ -1,7 +1,7 @@
 #include <iostream>
 #include "lexer.h"
 #include "parser.h"
-#include "ast/interpretervisitor.h"
+#include "ast/debugvisitor.h"
 
 int main() {
     ion::Lexer lexer;
@@ -13,8 +13,10 @@ int main() {
 
     ion::Parser parser;
     std::vector<ion::ast::Node*> ast = parser.parse(list);
-    ion::ast::InterpreterVisitor interpreter;
-    interpreter.run(ast);
+    ion::ast::DebugVisitor vst;
+    for (ion::ast::Node* node : ast) {
+        node->accept(&vst);
+    }
     return 0;
 }
 
