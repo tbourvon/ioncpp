@@ -19,11 +19,10 @@ public:
     }
 
     Declaration* getDeclaration(utf8string identifier) const {
-        try {
+        if (m_scope.count(identifier) != 0)
             return m_scope.at(identifier);
-        } catch (const std::out_of_range&) {
+        else
             return nullptr;
-        }
     }
 
     void addDeclaration(utf8string identifier, Declaration* decl) {
