@@ -21,13 +21,14 @@ void ScopeVisitor::visitIn(FuncCall *funcCall) {
 }
 
 void ScopeVisitor::visitIn(FuncDecl *funcDecl) {
-    m_currentScope->addDeclaration(funcDecl->name, funcDecl);
-    m_currentScope = new Scope(m_currentScope);
     funcDecl->scope = *m_currentScope;
+    m_currentScope = new Scope(m_currentScope);
+    m_currentScope->addDeclaration(funcDecl->name, funcDecl);
 }
 
 void ScopeVisitor::visitOut(FuncDecl *funcDecl) {
     memcpy(m_currentScope, m_currentScope->parent(), sizeof(m_currentScope));
+    m_currentScope->addDeclaration(funcDecl->name, funcDecl);
 }
 
 void ScopeVisitor::visitIn(StringLiteral *stringLiteral) {
