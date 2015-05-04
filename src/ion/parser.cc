@@ -188,11 +188,15 @@ ast::FuncDecl* Parser::parseFuncDecl() {
     expect({Token::Symbol, "{"});
     while (!accept({Token::Symbol, "}"})) {
         utf8string type = parseType();
-        Token varDeclNameToken = accept({Token::Identifier, ""});
-        if (type != "" && accept({Token::Symbol, "."})) {
-            if (lookahead({Token::Symbol, "("}))
-                funcDecl->nodes.push_back(parseFuncCall(type));
-        } else if (type != "" && varDeclNameToken) {
+        Token declNameToken = accept({Token::Identifier, ""});
+        if (type == "" && declNameToken) {
+            if (accept({Token::Symbol, "("}))
+                funcDecl->nodes.push_back(parseFuncCall(declNameToken.data));
+        } else if (type != "" && accept({Token::Symbol, "."})) {
+            if (lookahead({Token::Symbol, "("})) {
+                funcDecl->nodes.push_back(parseFuncCall(type + "." + expect({Token::Identifier, ""}).data));
+            }
+        } else if (type != "" && declNameToken) {
 
         }
     }
@@ -214,12 +218,11 @@ ast::FuncDecl* Parser::parseFuncDecl() {
  * \param context the context/owner of the function.
  * \return The function call node.
  */
-ast::FuncCall *Parser::parseFuncCall(utf8string context) {
+ast::FuncCall *Parser::parseFuncCall(utf8string name) {
     ast::FuncCall* funcCall = new ast::FuncCall;
 
-    funcCall->name = context + "." + expect({Token::Identifier, ""}).data;
+    funcCall->name = name;
 
-    expect({Token::Symbol, "("});
     bool firstArg = true; // We use firstArg so that we don't have to add a heading/trailing comma.
     while (!accept({Token::Symbol, ")"})) {
         if (!firstArg)
